@@ -1,0 +1,215 @@
+/* Header */
+.content_1 {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    box-shadow: 1px 1px 4px;
+}
+
+.content_1 {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar .wrap-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo {
+    display: flex;
+    object-fit: cover;
+    object-position: center;
+}
+
+.navbar .logo img {
+    width: 150px;
+    height: 84px;
+    border-radius: 2px;
+}
+
+.navbar .logo:hover {
+    text-decoration: none;
+    background: #fff;
+}
+
+.navbar .list {
+    display: flex;
+    margin-left: 12px;
+    /* background-color: red; */
+}
+
+.navbar .list > li {
+    position: relative;
+}
+
+.navbar .sub-list {
+    position: absolute;
+    top: 34px;
+    box-shadow: 2px 2px 5px;
+    z-index: 1;
+}
+.navbar .sub-list li {
+    min-width: 300px;
+}
+.navbar .list a {
+    display: block;
+    padding: 10px 14px;
+    font-weight: 650;
+    font-size: 1.8rem;
+    color: #4f5361;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.navbar .list li .sub-list {
+    display: none;
+    animation: fadeIn ease-in 0.2s;
+}
+
+.navbar .list li:hover .sub-list {
+    display: block;
+}
+
+.navbar .sub-list a {
+    border-radius: 0px;
+    border-bottom: 0.5px solid;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+.navbar a {
+    transition: background-color 0.3s;
+}
+.navbar a:hover {
+    background-color: var(--primary-color);
+}
+
+.navbar .action {
+    font-size: 2.2rem;
+}
+
+.content_2 {
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+}
+
+.sub_content {
+    /* background-color: aqua; */
+}
+
+.result,
+.graphic {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 4px;
+}
+
+.result {
+    padding-bottom: 0;
+}
+
+.graphic:last-child {
+    margin-bottom: 40px;
+}
+
+.result .title,
+.graphic .title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #3f3f3f;
+}
+
+.result .result_frame {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+}
+.result .icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.4rem;
+    border-radius: 999px;
+    padding: 4px;
+    background-color: #0094da;
+}
+
+.result .fa-solid {
+    position: absolute;
+    top: 8px;
+    left: 11px;
+}
+
+.result .fa-dollar-sign {
+    left: 13px;
+}
+
+.result .fa-arrow-rotate-left {
+    left: 9px;
+}
+
+.result .text {
+    padding: 12px;
+    margin-right: 12px;
+}
+
+.result .text:not(:last-child) {
+    border-right: 1px solid #d6d6d6;
+}
+
+.result .desc {
+    font-weight: 700;
+    color: #666;
+    font-size: 1.2rem;
+    margin: 0 0 0 0.2rem;
+}
+
+.result .count {
+    font-size: 2.2rem;
+    margin-top: 4px;
+}
+
+.result .note {
+    font-size: 1.2rem;
+    color: #999;
+    margin-top: 4px;
+}
+
+.graphic {
+    margin-top: 20px;
+}
+
+.graphic .wrap_1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.graphic .wrap_left {
+    display: flex;
+    align-items: center;
+}
+
+.graphic .wrap_right {
+    /* Tiền xóa nè */
+    color: #0094da;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.graphic .fa-dollar-sign {
+    border-radius: 999px;
+}
+
+.wrap_2 {
+    display: flex;
+    justify-content: center;
+}

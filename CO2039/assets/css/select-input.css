@@ -1,0 +1,139 @@
+.selection {
+    background-color: var(--grey-color);
+    z-index: 1;
+}
+
+.selection .filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 0;
+}
+
+.selection .filter_page {
+    display: flex;
+    align-items: center;
+}
+
+.selection .filter_page-num {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-right: 22px;
+}
+.selection .filter_page-current {
+    font-weight: 700;
+}
+
+/* ---------------- Tao nut trai phai -------------- */
+
+.selection .filter_page-control {
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    width: 72px;
+    height: 36px;
+}
+
+.selection .filter_page-btn {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.selection .filter_page-btn-disabled {
+    cursor: default;
+    background-color: #f9f9f9;
+}
+
+.selection .filter_page-btn-disabled .filter_page-icon {
+    color: #ccc;
+}
+
+.selection .filter_page-btn:first-child {
+    border-right: 0.5px solid var(--grey-border);
+}
+
+.selection .filter_page-icon {
+    margin: auto;
+    color: #555;
+}
+
+.selection .select-input_last {
+    background-color: var(--primary-color);
+    font-size: 1.6rem;
+    font-weight: 550;
+    display: flex;
+    justify-content: center;
+}
+
+/* Selection */
+
+.select-input {
+    position: relative;
+    width: 200px;
+    height: 34px;
+    padding: 0;
+    border-radius: 2px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#input_bar:focus ~ .select-input_list {
+    display: block;
+    z-index: 1;
+}
+.select-input_list {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 34px;
+    border-radius: 2px;
+    border: 1px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px;
+    animation: fadeIn ease-in 0.2s;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.select-input_link {
+    display: block;
+    width: 100%;
+    font-size: 1.6rem;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-bottom: 0.5px solid var(--grey-border);
+}
+.select-input_link:hover {
+    background-color: var(--primary-color);
+}
+
+/* ------------------ Input ------------- */
+.search-input_bar {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    color: #4f5361;
+    padding: 0 8px;
+}
+
+#size,
+#price,
+#brand,
+#classify,
+#sort {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #4f5361;
+    padding: 0 8px;
+}

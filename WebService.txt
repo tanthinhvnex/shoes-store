@@ -1,0 +1,159 @@
+update: 28/4/2023
+A) Giới thiệu các class của service:
+•	Sevice quản lý có các class: ManagerService, Accouting.
+•	Service người dùng có các class: ClientService, ProductForSale, User, CustomerReview, InfoDelivery
+•	Class Product là class cha của Class ProductForSale:
+
+############################################################################################################################################
+
+B) Mô tả:
+	- Các class service quản lý nằm trong thư mục com/example/model/manager.
+	- Các class service người dùng nằm trong thư mục com/example/model/user.
+	- Class Product nằm trong thư mục com/example/model
+I) Class Product:
+•	Class Product có các thuộc tính:
+	- protected String image: link ảnh của sản phẩm
+	- protectedString smallImg1: link ảnh nhỏ thứ nhất của sản phẩm
+	- protected String smallImg2: link ảnh nhỏ thứ hai của sản phẩm
+	- protected String smallImg3: link ảnh nhỏ thứ ba của sản phẩm
+	- protected String decription: mô tả của sản phẩm
+	- protected String name: tên của sản phẩm
+	- protected String category: phân loại của sản phẩm
+	- protected int size: kích thước sản phẩm
+
+	- public String getName(), getCategory(), getImage(), getSmallImg1(), getSmallImg2(), getSmallImg3(), getDescription(), getSize(): trả về link ảnh, mô tả, tên và phân loại của sản phẩm.
+
+
+II) Về service quản lý có các class: 
+	1) Class ManagerService có các thuộc tính:
+	- public static ArrayList<User> users: lưu danh sách khách hàng đã đăng ký
+	- public static ArrayList<ProductForSale> products: lưu danh sách sản phẩm đang bán
+	- public static ArrayList<String> productsName: danh sách tên các sản phẩm (hỗ trợ việc vẽ biểu đồ doanh thu thuần của trang index-manager)
+    	- public static ArrayList<Integer> noOfSolds: số lượng đã bán của mỗi sản phẩm (hỗ trợ việc vẽ biểu đồ doanh thu thuần của trang index-manager)
+    
+	- public static ArrayList<ProductForSale> newProducts: lưu danh sách sản phẩm mới nhập
+	- public static ArrayList<ProductForSale> hotProducts: lưu danh sách sản phẩm hot
+	- public static ArrayList<ProductForSale> saleOffProducts: lưu danh sách sản phẩm đang khuyến mãi
+	- public static Accounting accounting: lưu dữ liệu về kế toán (doanh thu, chi phí)
+	- public static int noOfUsers: số khách hàng hiện tại
+	- public static int noOfOrders: số đơn mà cửa hàng đã bán
+
+	- public static void importProduct(String image, String description, String name, String category, int quantity, int unitPrice, int initPrice): nhập sản phẩm và cập nhật lại chi phí (Accounting: expense)
+		+ Nếu sản phẩm đã có trong cửa hàng thì cập nhật thêm số lượng (quantity) của sản phẩm.
+		+ Nếu sản phẩm chưa có trong của hàng thì thêm sản phẩm này vào list: products/newProducts.
+	- public static void removeProduct(ProductForSale product): xóa sản phẩm ra khỏi list products/newProducts/hotProducts/saleoffProducts
+	- public static void updateProduct(String image, String description, String name, String category, int quantity, int unitPrice, int initPrice): cập nhật lại sản phẩm
+
+	2) Class Accounting có các thuộc tính:
+	- private expense: chi phí
+	- private revenue: doanh thu
+
+	- public void updateExpense(), updateRevenue(): cập nhật chi phí và doanh thu của cửa hàng.
+	- public int getExpense(), int getRevenue(): lấy thông tin chi phí và doanh thu.
+
+III) Về service người dùng có các class:
+	1) Class ClientService có các thuộc tính:
+	- public static User login(String userId, String password): return tài khoản người dùng bằng cách kiểm tra userId và password có tồn tại trong list ManagerService.users hay không, nếu userId hoặc password không tồn tại thì return null.
+	- public static User register(): thêm tài khoản người dùng mới đăng ký vào danh sách tài khoản người dùng (ManagerService.users) của cửa hàng và trả về tài khoản mới này
+	- public static boolean isExistedAccount(String phoneNums): kiểm tra số điện thoại đăng ký đã tồn tại hay chưa, nếu đã tồn tại thì trả về true và ngược lại
+	- public static boolean isExistedUserId(String userId): kiểm tra userId đăng ký đã tồn tại hay chưa, nếu đã tồn tại thì trả về true và ngược lại
+
+	2) Class ProductForSale kế thừa các thuộc tính của class Product và có các thuộc tính riêng là:
+	- public ProductForSale(): default constructor
+	- public ProductForSale(ProductForSale product, int size): cập nhật size giày khi người dùng thêm sản phẩm vào giỏ hàng.
+
+	- public ProductForSale(String image, String smlImg1, String smlImg2, String smlImg3, String description, String name, String category, int quantity, int unitPrice, int initPrice, boolean newOrHot):
+	- public ProductForSale(String image, String description, String name, String category, int quantity, int unitPrice, int initPrice, boolean newOrHot):
+
+	- public ProductForSale(String image, String description, String name, String category, int quantity, int unitPrice, int initPrice)
+	- public ProductForSale(String image, String smlImg1, String smlImg2, String smlImg3, String description, String name, String category, int quantity, int unitPrice, int initPrice):
+
+	- public ProductForSale(String image, String description, String name, String category, int quantity, int unitPrice, int initPrice, boolean newOrHot, int noOfSolds, ArrayList<CustomerReview> crs)
+	- public ProductForSale(String image, String description, String name, String category, int quantity, int unitPrice, int initPrice, double saleoff, int noOfSolds, ArrayList<CustomerReview> crs)
+	- public ProductForSale(String image, String description, String name, String category, int quantity, int unitPrice, int initPrice, int noOfSolds, ArrayList<CustomerReview> crs)
+	- public ProductForSale(String image, String smlImg1, String smlImg2, String smlImg3, String description, String name, String category, int quantity, int unitPrice, int initPrice, int noOfSolds, ArrayList<CustomerReview> crs)
+
+	- public ProductForSale(String image, String smlImg1, String smlImg2, String smlImg3, String description, String name, String category, int quantity, int unitPrice, int initPrice, double saleoff)
+	- public ProductForSale(String image, String description, String name, String category, int quantity, int unitPrice, int initPrice, double saleoff)
+
+	- private int quantity: số lượng của sản phẩm
+	- private int unitPrice: đơn giá của sản phẩm
+	- private int initPrice: giá vốn của sản phẩm
+	- private ArrayList<CustomerReview> crs: danh sách đánh giá của sản phẩm
+	- private int noOfSolds: số lượng đã bán của sản phẩm
+	- private double saleoff: độ giảm giá của sản phẩm (ví dụ saleoff = 0.9 thì sản phẩm giảm 10%)
+	- private boolean newOrHot: nếu bằng true thì sản phẩm có state show trên web bán hàng là NEW, nếu = false thì sản phẩm có state là HOT
+
+	- Các public method getQuantity(), getUnitPrice(),...
+	- public void addCustomerReview(): thêm đánh giá của khách hàng vào danh sách đánh giá của sản phẩm
+	- public static void updateNoOfSolds(User.CartState cartState): duyệt qua danh sách sản phẩm trong giỏ hàng (CartState.products) để cập nhật số sản phẩm đã bán cũng như số sản phẩm còn lại của sản phẩm trong danh sách sản phẩm của cửa hàng (ManagerService.products).
+
+	3) Class User có các thuộc tính:
+	- public User(): default 
+	- public User(String fullName, String phoneNums, String userId, String password):
+	- public Class BankAccount: có các thuộc tính:
+		+ public BankAccount(): khởi tạo balance = 500000000
+		+ public BankAccount(int balance)
+		+ private int balance: số dư tài khoản ngân hàng
+
+		+ public boolean pay(int money): nếu số dư (balance) trừ money lớn 0 thì cập nhật lại số dư và return true, else return false
+		+ public int getBalance(): trả về số dư tài khoản (balance)
+
+	- public Class CartState: có các thuộc tính:
+		+ public CartState(): khởi tạo các thuộc tính products,quantityEachProduct
+		+ public ArrayList<ProductForSale> products: danh sách sản phẩm đang trong giỏ hàng
+		+ public ArrayList<Integer> quantityEachProduct: số lượng của mỗi sản phẩm đang trong giỏ hàng
+		+ public int totalCost: tổng giá tiền của các sản phẩm đang trong giỏ hàng
+		+ public int totalQuantity: tổng số sản phẩm đang có trong giỏ hàng
+
+	- public Class BuyHistory: có các thuộc tính:
+		+ public BuyingHistory(): khởi tạo các thuộc tính products,quantityEachProduct,hasAsset
+		+ public ArrayList<ProductForSale> products: danh sách sản phẩm đã mua
+		+ public ArrayList<Integer> quantityEachProduct: số lượng của mỗi sản phẩm đã mua
+		+ public ArrayList<Boolean> hasAsset: kiểm tra sản phẩm đã được đánh giá hay chưa
+		+ public int totalCost: tổng số tiền của các sản phẩm đã mua
+		+ public ArrayList<InfoDelivery> infoDeliverys: lưu thông tin về người nhận/địa chỉ/sđt/tổng tiền/... mỗi đơn hàng
+	
+	- private boolean logInState: trạng thái đăng nhập, nếu true thì nơi khác không thể đăng nhập vào trang web bán hàng và ngược lại
+	- private String fullName: tên đầy đủ người dùng
+	- private String userId: id đăng nhập của người dùng
+	- private String password: mật khẩu đăng nhập của người dùng
+	- private String phoneNums: số điện thoại của người dùng
+	- private BankAccount bankAcc: tài khoản ngân hàng của người dùng
+	- private BuyingHistory buyingHistory: lịch sử mua hàng của người dùng
+	- private CartState cartState: trạng thái giỏ hàng của người dùng
+
+	- Các hàm public getter
+	- public void setActiveLoginState(): set trạng thái đăng nhập bằng true khi tài khoản đã được đăng nhập
+	- public void logout(): set trạng thái đăng nhập bằng false khi tài khoản được đăng xuất
+	- public void updateCart(ProductForSale product, int quantity, double saleoff, int size): cập nhật số lượng (thêm hoặc bớt) sản phẩm trong giỏ hàng, cập nhật lại size giày của các sản phẩm trong giỏ hàng.
+	- public void addToCart(ProductForSale product, int quantity, double saleoff): thêm sản phẩm vào giỏ hàng (lần thêm đầu tiên)
+	- public void clearCart(): clear giỏ hàng
+	- public void updateBuyingHistory(String fullName, String phoneNums, String address, String email, String note): cập nhật lịch sử mua hàng bao gồm các thông tin mua hàng như người nhận/địa chỉ/sđt/tổng tiền/...
+	- public boolean bankPay(String fullName, String phoneNums, String address, String email, String note):thanh toán đơn hàng trong giỏ hàng qua ngân hàng -> nếu đủ tiền trong tài khoản ngân hàng thì:
+		+ cập nhật doanh thu của cửa hàng
+		+ cập nhật lại số sản phẩm đã bán của các sản phẩm vừa được mua
+		+ cập nhật lịch sử mua hàng bằng cách truyền các tham số vào hàm updateBuyingHistory()
+		+ clear giỏ hàng
+	- public void addProductReview(ProductForSale product, int noOfStars, String review, User user): thêm đánh giá sản phẩm của khách hàng đã mua
+
+	4) Class CustomerReview có các thuộc tính:
+	- public CustomerReview():default
+	- private int noOfStars:
+	- private String review:
+	- private String fromUser: sản phẩm được đánh giá bởi người dùng nào (chỉ cần biết tên)
+	- Các hàm public getter/setter cho các thuộc tính private
+
+	5) Class InfoDelivery có các thuộc tính:
+	- public InfoDelivery():default
+	- public InfoDelivery(String fullName, String phoneNums, String address, String email, String note, ArrayList<ProductForSale> products, ArrayList<Integer> quantityEachProduct, int totalCost):
+	- private String fullName:
+	- private String phoneNums:
+	- private String address:
+	- private String email:
+	- private String note:
+	- private String orderDate:
+	- public ArrayList<ProductForSale> products:
+	- public ArrayList<Integer> quantityEachProduct:
+	- public int totalCost:
+	- Các hàm getter cho các thuộc tính private

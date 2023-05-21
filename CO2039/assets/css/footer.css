@@ -1,0 +1,50 @@
+/* ------------------ Icon Messenger ------------------- */
+.icon_messenger {
+    position: fixed;
+    bottom: 20px;
+    right: 26px;
+    font-size: 5rem;
+    color: #0083ff;
+}
+
+/* ----------------------- Footer -------------------- */
+.footer {
+    margin-top: 100px;
+    padding: 22px 0px 100px;
+    background: #000;
+}
+
+.footer a {
+    color: #7e7e7e;
+}
+.footer .sub_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer .left {
+    display: flex;
+}
+.footer .left .list {
+    margin-right: 120px;
+}
+.footer .left .list_item {
+    margin-top: 20px;
+}
+
+.footer .left .list > .list_item:first-child a {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 520;
+    margin-bottom: 16px;
+}
+
+.footer .right .list {
+    display: flex;
+}
+
+.footer .right .list_item {
+    margin-left: 20px;
+    font-size: 2rem;
+}
